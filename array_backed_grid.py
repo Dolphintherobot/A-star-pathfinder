@@ -1,12 +1,17 @@
 
 
 def get_coordinates():
-        player_position = pygame.mouse.get_pos()
-        x = player_position[0]
-        y = player_position[1]
-        return (x,y)
+    '''Purpose:to get the position of the players mouse
+    :return y: the position of the click on the gui on the y axis
+    :return x: the coordinate of the click on the gui on the x axis '''
+    player_position = pygame.mouse.get_pos()
+    x = player_position[1]
+    y = player_position[0]
+    return (x,y)
 
 def map_to_grid(grid,width,margin,x,y):
+    '''Purpose:maps a point on the gui and transfers it to the array backed grid
+    Post-condtions:will modify the coordinate on the grid to become a 1'''
     x = x//(width+margin)
     y =y//(width+margin)
     grid[x][y] = 1        
@@ -49,31 +54,13 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
         elif event.type ==pygame.MOUSEBUTTONDOWN:
-            mouse_y,mouse_x = get_coordinates()
+            mouse_x,mouse_y = get_coordinates()
             map_to_grid(grid,width,margin,mouse_x,mouse_y)
 
 
-    
 
- 
-
-
-
-    
- 
-    # --- Game logic should go here
-    
- 
-    # --- Screen-clearing code goes here
- 
-    # Here, we clear the screen to white. Don't put other drawing commands
-    # above this, or they will be erased with this command.
- 
-    # If you want a background image, replace this clear with blit'ing the
-    # background image.
     screen.fill(BLACK)
- 
-    # --- Drawing code should go here
+
     
     height = 20
     width = 20
@@ -101,12 +88,12 @@ while not done:
     
    
  
-    # --- Go ahead and update the screen with what we've drawn.
+    
     pygame.display.flip()
  
     # --- Limit to 60 frames per second
     clock.tick(60)
  
-# Close the window and quit.
+
 pygame.quit()
 
