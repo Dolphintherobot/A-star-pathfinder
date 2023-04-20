@@ -23,7 +23,7 @@ def map_to_grid(grid,width,margin,x,y):
 
 import pygame
  
-# Define some colors
+#some colors defined in RGB
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
@@ -31,25 +31,27 @@ RED = (255, 0, 0)
  
 pygame.init()
  
-# Set the width and height of the screen [width, height]
+#size of squares and screen
+height = 20
+width = 20    
+margin = 5
 size = (255, 255)
 screen = pygame.display.set_mode(size)
+
+
+
+n = 10 #how many rows 
+m = 10 #how many columns
  
 pygame.display.set_caption("My Game")
- 
+grid  = [[0 for x in range(n)] for y in range(m)]
 
-grid  = [[0 for x in range(10)] for y in range(10)]
-grid[1][5] =1
-
-# Loop until the user clicks the close button.
 done = False
  
-# Used to manage how fast the screen updates
 clock = pygame.time.Clock()
  
 # -------- Main Program Loop -----------
 while not done:
-    # --- Main event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
@@ -62,36 +64,21 @@ while not done:
     screen.fill(BLACK)
 
     
-    height = 20
-    width = 20
-    margin = 5
-    squares = 10
-    x = 5
-    y = 5
-    for row in range(0,margin*squares,margin):
-        for column in range(0,margin*squares,margin):
-            square = pygame.Rect((x,y),(width,height))
-            grid_x = x//25
-            grid_y =y//25
-            if grid[grid_y][grid_x] == 1:
+    #draw in squares
+    for row in range(n):
+        for column in range(m):
+            color = RED
+            if grid[row][column] == 1:
                 color = GREEN
-            else:
-                color = RED
-            pygame.draw.rect(screen,color,square)
-            x += width + margin
-        x = 5
-        y += height + margin
-    
-
-        #grabs the position of the players mouse
-        
-    
-   
- 
+            pygame.draw.rect(screen,
+                             color,
+                             [(margin + width) * column + margin,
+                              (margin + height) * row + margin,
+                              width,
+                              height]) 
     
     pygame.display.flip()
  
-    # --- Limit to 60 frames per second
     clock.tick(60)
  
 
