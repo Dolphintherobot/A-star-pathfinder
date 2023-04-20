@@ -1,14 +1,3 @@
-"""
- Pygame base template for opening a window
- 
- Sample Python/Pygame Programs
- Simpson College Computer Science
- http://programarcadegames.com/
- http://simpson.edu/computer-science/
- 
- Explanation video: http://youtu.be/vRB_983kUMc
-"""
- 
 
 
 def get_coordinates():
@@ -19,7 +8,7 @@ def get_coordinates():
 
 def map_to_grid(grid,width,margin,x,y):
     x = x//(width+margin)
-    y =y//25
+    y =y//(width+margin)
     grid[x][y] = 1        
 
 
@@ -61,7 +50,7 @@ while not done:
             done = True
         elif event.type ==pygame.MOUSEBUTTONDOWN:
             mouse_y,mouse_x = get_coordinates()
-            map_to_grid(mouse_x,mouse_y,grid)
+            map_to_grid(grid,width,margin,mouse_x,mouse_y)
 
 
     
