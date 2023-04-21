@@ -109,11 +109,10 @@ class linked_list:
         :return data: the F_value stored in the node'''
 
         
-        i = 0
         current_node = self.head
         while coordinates != current_node.coordinates:
             current_node = current_node.next_node
-            i+=1
+           
         
         data = current_node.f_value
         return data
@@ -137,13 +136,13 @@ class linked_list:
 
     def value_is_in(self,value):
         '''Purpose:checks to see if the value is stored in the list
-        :param value: the value you wish to check
+        :param value: the coordinates you wish to check
         :return: True if found, False otherwise'''
         
         found  = False
         current_node = self.head
         while current_node != None:
-            if current_node.f_value == value:
+            if current_node.coordinates == value:
                 found = True
             current_node = current_node.next_node
         return found 
