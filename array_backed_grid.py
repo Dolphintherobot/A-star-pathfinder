@@ -1,4 +1,7 @@
 
+import pygame
+
+
 
 def get_coordinates():
     '''Purpose:to get the position of the players mouse
@@ -16,12 +19,6 @@ def map_to_grid(grid,width,margin,x,y):
     y =y//(width+margin)
     grid[x][y] = 1        
 
-
-
-
-
-
-import pygame
  
 #some colors defined in RGB
 BLACK = (0, 0, 0)
@@ -37,7 +34,6 @@ width = 20
 margin = 5
 size = (255, 255)
 screen = pygame.display.set_mode(size)
-
 
 
 n = 10 #how many rows 
