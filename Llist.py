@@ -46,17 +46,19 @@ class linked_list:
         """
 
         if self.is_empty():
-            self.size +=1
+            self.size += 1
             self.head = new_node
             return 
         current = self.head
+
         
-        while current.f_value > new_node.f_value and current != None:
+        while current != None and current.f_value > new_node.f_value :
             previous_node = current
             current = current.next_node
         
-        previous_node.next = new_node
-        new_node.next = current
+        previous_node.next_node = new_node
+        new_node.next_node = current
+        self.size +=1
 
 
 
@@ -108,7 +110,6 @@ class linked_list:
         :param coordinates: tuple,representing the x,y cooridnates on the grid
         :return data: the F_value stored in the node'''
 
-        
         current_node = self.head
         while coordinates != current_node.coordinates:
             current_node = current_node.next_node
