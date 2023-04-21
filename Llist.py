@@ -50,6 +50,7 @@ class linked_list:
             self.head = new_node
             return 
         current = self.head
+        previous_node = current
 
         
         while current != None and current.f_value > new_node.f_value :
@@ -57,7 +58,10 @@ class linked_list:
             current = current.next_node
         
         previous_node.next_node = new_node
-        new_node.next_node = current
+        if self.size == 1 and previous_node == current:
+            pass
+        else:
+            new_node.next_node = current
         self.size +=1
 
 
