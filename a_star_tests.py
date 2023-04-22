@@ -49,3 +49,28 @@ a_list.insert(1000,"A","b")
 
 
 
+
+a_list = Ov.open_vertices()
+
+a_list.insert(1,"A","b")
+
+
+a_list.print_distance()
+
+a_list.coordinate_is_in(14,"A","b")
+
+a_list.print_distance()
+
+a_list.coordinate_is_in(199,"A","b")
+
+a_list.coordinate_is_in(-2,"A","b")
+a_list.print_distance()
+
+
+
+
+
+
+
+
+
