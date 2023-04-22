@@ -34,13 +34,16 @@ L_list = L.linked_list()
 
 L_list.insert(first)
 L_list.insert(second)
+v1 = L_list.remove_head()
+v2 =L_list.remove_head()
 
-check1 = L_list.remove_head() == second.coordinates
-check2 = L_list.remove_head() == first.coordinates
+print(v1,v2)
+check1 = v1 == second.coordinates
+check2 = v2 == first.coordinates
 
 reason = "Checking if insert keeps sorted based on heuristic distance"
-if actual != expected:
-    print(f"error with input {test} actual was {actual}, expected was {expected},reason:{reason}")
+if not check1 or  not check2:
+    print(f"error {reason}")
 
 
 
@@ -54,13 +57,16 @@ L_list = L.linked_list()
 
 L_list.insert(first)
 L_list.insert(second)
+v1 = L_list.remove_head()
+v2 =L_list.remove_head()
 
-check1 = L_list.remove_head() == first.coordinates
-check2 = L_list.remove_head() == second.coordinates
+print(v1,v2)
+check1 = v1 == first.coordinates
+check2 = v2 == second.coordinates
 
 reason = "Checking if insert keeps sorted based on heuristic distance,but now inserted in ascending order"
-if actual != expected:
-    print(f"error with input {test} actual was {actual}, expected was {expected},reason:{reason}")
+if not check1 or not check2:
+    print(f"error {reason}")
 
 
 
@@ -75,8 +81,8 @@ L_list.insert(first)
 L_list.insert(second)
 
 check1 = L_list.value_is_in(first.coordinates) == True
-check2 = L_list.remove_head(second.coordinates) == True
+check2 = L_list.value_is_in(second.coordinates) == True
 
-reason = "Checking if insert keeps sorted based on heuristic distance,but now inserted in ascending order"
-if actual != expected:
-    print(f"error with input {test} actual was {actual}, expected was {expected},reason:{reason}")
+reason = "Checking if value is in detects values that are in"
+if not check1 or not check2:
+    print(f"error reason:{reason}")
