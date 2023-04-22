@@ -1,6 +1,3 @@
-import Llist as L
-
-
 
 
 

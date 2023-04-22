@@ -1,7 +1,6 @@
 import a_star as A
 
-
-import Llist as L
+import open_vertices as Ov
 
 
 ####################
@@ -20,69 +19,33 @@ if actual != expected:
 
 
 
-
-#########################
-#test Linked list and node class
+#test open_vertices class
 
 
-first = L.node((3,2),5,(3,4))
-second = L.node((1,2),3,(3,4))
-# print(first.f_value)
-# print(second.coordinates)
+a_list = Ov.open_vertices()
 
-L_list = L.linked_list()
+a_list.insert(20,"A","b")
 
-L_list.insert(first)
-L_list.insert(second)
-v1 = L_list.remove_head()
-v2 =L_list.remove_head()
+a_list.insert(14,"A","b")
+a_list.insert(199,"A","b")
+a_list.insert(1,"A","b")
 
-print(v1,v2)
-check1 = v1 == second.coordinates
-check2 = v2 == first.coordinates
-
-reason = "Checking if insert keeps sorted based on heuristic distance"
-if not check1 or  not check2:
-    print(f"error {reason}")
+#a_list.print_distance()
 
 
+#check when in order
 
 
+a_list = Ov.open_vertices()
 
+a_list.insert(1,"A","b")
 
-first = L.node((3,2),5,(3,4))
-second = L.node((1,2),8,(3,4))
+a_list.insert(14,"A","b")
+a_list.insert(199,"A","b")
+a_list.insert(1000,"A","b")
 
-L_list = L.linked_list()
-
-L_list.insert(first)
-L_list.insert(second)
-v1 = L_list.remove_head()
-v2 =L_list.remove_head()
-
-print(v1,v2)
-check1 = v1 == first.coordinates
-check2 = v2 == second.coordinates
-
-reason = "Checking if insert keeps sorted based on heuristic distance,but now inserted in ascending order"
-if not check1 or not check2:
-    print(f"error {reason}")
+#a_list.print_distance()
 
 
 
 
-
-first = L.node((3,2),5,(3,4))
-second = L.node((1,2),8,(3,4))
-
-L_list = L.linked_list()
-
-L_list.insert(first)
-L_list.insert(second)
-
-check1 = L_list.value_is_in(first.coordinates) == True
-check2 = L_list.value_is_in(second.coordinates) == True
-
-reason = "Checking if value is in detects values that are in"
-if not check1 or not check2:
-    print(f"error reason:{reason}")
