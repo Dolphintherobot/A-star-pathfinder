@@ -50,3 +50,13 @@ class open_vertices:
                     return self.insert(distance,current,previous)
                 else:
                     return None
+
+    def get_current(self):
+        """Purpose will return the the vertex with the shortest manhattin distance
+        :return vertex: tuple of x,y coordinates representing the shortest distance from end
+        :Post-conditions: will cut remove the front of the list
+        """
+
+        vertex = self.__list[0][1]
+        self.__list = self.__list[1:]
+        return vertex 

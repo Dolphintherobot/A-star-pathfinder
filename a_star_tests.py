@@ -68,6 +68,23 @@ a_list.print_distance()
 
 
 
+#################################
+#test get_current method
+
+a_list = Ov.open_vertices()
+
+a_list.insert(1,"A","b")
+
+a_list.insert(14,"a","b")
+a_list.insert(199,"a","b")
+a_list.insert(1000,"a","b")
+check1 = a_list.get_current() == "A"
+check2 = a_list.get_current() != "A"
+
+if not (check1 and check2):
+    print("error checking if get_current works")
+
+
 
 
 
