@@ -32,3 +32,21 @@ class open_vertices:
 
         for data in self.__list:
             print(data[0])
+
+    def coordinate_is_in(self,distance,current,previous):
+        ''''Purpose: will check to see if a current coordinate is in the list
+        :param distance: the distance from current vertex to the end of the grid
+        :param current: a vertex on a graph represented by a tuple of x,y coordinates
+        :param previous: the vertex on the graph by a tuple of x,y coordinates in which the distance was calculated from
+        :Post-conditions: will update the list
+        if current already exists in the list and has a lower distance it will be removed and reinserted
+
+        '''
+
+        for data in self.__list:
+            if current == data[1]:
+                if distance < data[0]:
+                    self.__list.remove(data)
+                    return self.insert(distance,current,previous)
+                else:
+                    return None
