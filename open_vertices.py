@@ -1,0 +1,34 @@
+
+
+class open_vertices:
+    
+    def __init__(self):
+        """Purpose: to create a list of open vertices that stores a list of manhattin distance,
+        coordinates and previous vertex"""
+
+        self.__list = []
+
+    
+    def insert(self,distance,current,previous):
+        ''''Purpose to insert a current vertex in ascending order with respect to distance
+        :param distance: the distance from current vertex to the end of the grid
+        :param current: a vertex on a graph represented by a tuple of x,y coordinates
+        :param previous: the vertex on the graph by a tuple of x,y coordinates in which the distance was calculated from
+        :Post-conditions: will update the list
+        '''
+
+        data = [distance,current,previous]
+        i = 0
+		
+        while i < len(self.__list) and self.__list[i][0] < distance:
+            i+=1
+    
+        self.__list.insert(i,data)
+
+
+    def print_distance(self):
+        """Purpose: a test function that is used to check to see if the f_values are in order"""
+
+
+        for data in self.__list:
+            print(data[0])

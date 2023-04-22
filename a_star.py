@@ -18,7 +18,6 @@ def distance_calculator(current,goal):
 
 
 
-open_vertices = L.linked_list()
 
 closed_vertices = []
 
