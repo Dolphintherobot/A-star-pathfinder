@@ -39,6 +39,7 @@ class open_vertices:
         :param current: a vertex on a graph represented by a tuple of x,y coordinates
         :param previous: the vertex on the graph by a tuple of x,y coordinates in which the distance was calculated from
         :Post-conditions: will update the list
+        :return: True if the value was found,False otherwise
         if current already exists in the list and has a lower distance it will be removed and reinserted
 
         '''
@@ -47,9 +48,11 @@ class open_vertices:
             if current == data[1]:
                 if distance < data[0]:
                     self.__list.remove(data)
-                    return self.insert(distance,current,previous)
-                else:
-                    return None
+                    self.insert(distance,current,previous)
+    
+                return True
+
+        return False
 
     def get_current(self):
         """Purpose will return the the vertex with the shortest manhattin distance
