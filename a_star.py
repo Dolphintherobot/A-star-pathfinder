@@ -1,6 +1,6 @@
 
 
-
+import open_vertices as ov
 
 def distance_calculator(current,goal):
     """Purpose: calculates the manhattin distance between 2 points
@@ -15,6 +15,37 @@ def distance_calculator(current,goal):
 
 
 
+def square_generator(current,grid,taken):
+    '''
+    Purpose: will generate a list of coordinates surrounding the current position in a   
+    in a square pattern
+    param current: a x,y tuple representing the current position
+    param grid: a 2d list you are trying to find a path towards
+    param taken: a list of previously taken coordinates
+    return valid_coordinates: a list of x,y tuples representing valid choices for the next shortest path
+
+    '''
+
+    valid_coordinates = []
+    n = len(grid) -1
+    m  = len(grid[0]) -1
+    top_left_x = current[0] -1
+    top_left_y = current[1] - 1
+
+    for x in range(top_left_x,top_left_x+3):
+        for y in range(top_left_y,top_left_y+3):
+            if x < 0 or x > n:
+                continue
+            elif y < 0 or y > m:
+                continue
+            elif (x,y) in taken:
+                continue
+            else:
+                coordinate = (x,y)
+                valid_coordinates.append(coordinate)
+    return valid_coordinates
+            
+
 
 
 def find_path(grid,start,end):
@@ -24,8 +55,9 @@ def find_path(grid,start,end):
     param start: the starting position represented with an x,y tuple
     param end: the ending postion represented with x,y tuple
     '''
-
-
+    taken_spaces = []
+    closed_vertices = []
+    open_vertices = ov.open_vertices()
 
     n = len(grid) -1
     m  = len(grid[0]) -1
@@ -34,21 +66,11 @@ def find_path(grid,start,end):
 
 
     while current != end:
+        break
 
 
 
         
-        top_left_x = current[0] -1
-        top_left_y = current[1] - 1
-
-        for x in range(top_left_x,top_left_x+3):
-            for y in range(top_left_y,top_left_y+3):
-                if x < 0 or x > n:
-                    continue
-                elif y < 0 or y > m:
-                    continue
-                elif (x,y) in closed_vertices:
-                    continue
             
             
 
