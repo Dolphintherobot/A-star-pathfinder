@@ -1,6 +1,7 @@
 
 
 import open_vertices as ov
+import numpy as np
 
 def distance_calculator(current,goal):
     """Purpose: calculates the manhattin distance between 2 points
@@ -61,7 +62,7 @@ def find_path(grid,start,end):
     closed_vertices = []
     open_vertices = ov.open_vertices()
 
-    open_vertices.insert(start)
+    open_vertices.insert(0,start,None)
     current = None
     previous = None
 
@@ -82,9 +83,14 @@ def find_path(grid,start,end):
     
 
     current,previous = closed_vertices[-1]
-    
+    print("I made it")
+    i = 0
+    while current != start:
+        # i  +=1
+        # if i ==10:
+        #     break
 
-    while current != None:
+        print(current)
         x,y = current
         grid[x][y] = 19
         
@@ -92,8 +98,18 @@ def find_path(grid,start,end):
             if tuple[0] == previous:
                 current,previous = tuple
     
-    return 
+    x,y = current
+    grid[x][y] = 19
+    
+    
+    return print(np.array(grid))
 
+
+grid = [[0 for n in range(10)] for m in range(10)]
+
+start = (0,0)
+end = (9,9)
+find_path(grid,start,end)
 
 
 
