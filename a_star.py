@@ -44,7 +44,9 @@ def square_generator(current,grid,taken):
                 coordinate = (x,y)
                 valid_coordinates.append(coordinate)
     return valid_coordinates
-            
+
+
+
 
 
 
@@ -59,14 +61,39 @@ def find_path(grid,start,end):
     closed_vertices = []
     open_vertices = ov.open_vertices()
 
-    n = len(grid) -1
-    m  = len(grid[0]) -1
-    current = start
+    open_vertices.insert(start)
+    current = None
     previous = None
 
 
     while current != end:
-        break
+        previous = current
+        current = open_vertices.get_current()
+        taken_spaces.append(current)
+        closed_vertices.append((current,previous))
+
+
+        valid_coordinates = square_generator(current,grid,taken_spaces)
+
+        for coordinate in valid_coordinates:
+            F = distance_calculator(coordinate,end)
+            if not open_vertices.coordinate_is_in(F,coordinate,current):
+                open_vertices.insert(F,coordinate,current)
+    
+
+    current,previous = closed_vertices[-1]
+    
+
+    while current != None:
+        x,y = current
+        grid[x][y] = 19
+        
+        for tuple in closed_vertices:
+            if tuple[0] == previous:
+                current,previous = tuple
+    
+    return 
+
 
 
 
