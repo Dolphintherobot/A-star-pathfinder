@@ -8,6 +8,11 @@ class open_vertices:
 
         self.__list = []
 
+    def is_empty(self):
+        """Purpose: will check if the list is empty
+        :return: True if list is empty,False otherwise"""
+        return len(self.__list) == 0
+
     
     def insert(self,distance,current,previous):
         ''''Purpose to insert a current vertex in ascending order with respect to distance
