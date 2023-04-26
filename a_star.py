@@ -82,6 +82,8 @@ def find_path(grid,start,end,print_grid= False):
     param grid: an nxm grid 
     param start: the starting position represented with an x,y tuple
     param end: the ending postion represented with x,y tuple
+    param print_grid:boolean representing if you want grid printed to console
+    return:True if a path is found,False otherwise
     '''
     taken_spaces = []
     closed_vertices = []
@@ -118,11 +120,6 @@ def find_path(grid,start,end,print_grid= False):
      
 
 
-grid = [[0 for n in range(10)] for m in range(10)]
-
-start = (0,0)
-end = (9,9)
-find_path(grid,start,end,True)
 
 
 

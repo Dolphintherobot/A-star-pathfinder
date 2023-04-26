@@ -68,6 +68,26 @@ a_list.print_distance()
 
 
 
+#test is_empty method
+
+a_list = Ov.open_vertices()
+test = "is_empty"
+reason = "check empty list"
+if not a_list.is_empty():
+    print(f"error with {test} reason is {reason}")
+
+a_list = Ov.open_vertices()
+test = "is_empty"
+reason = "check non empty list"
+a_list.insert("A","a","A")
+if a_list.is_empty():
+    print(f"error with {test} reason is {reason}")
+
+
+
+
+
+
 #################################
 #test get_current method
 
