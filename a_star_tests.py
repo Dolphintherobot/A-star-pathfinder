@@ -140,3 +140,40 @@ square_generator_tests = {
 }
 
 test_square_generator(square_generator_tests)
+
+
+
+
+
+
+
+def test_find_path(dict):
+    '''Purpose: to test the find_path function
+    :param dict: a dictionary containing the test cases,expected outputs and reasons for testing
+    :return: None
+    Post-conditions: will print error on console if expected !=actual output'''
+
+    grid  = [[n for n in range(10)] for m in range(10)]
+    for test in dict:
+        start = test[0]
+        end = test[1]
+
+        
+        actual = A.find_path(grid,start,end)
+        expected = dict[test][0]
+        reason = dict[test][1]
+        if actual != expected:
+            print(f"error with input {test} actual was {actual}, expected was {expected},reason:{reason}")
+
+
+
+
+find_path_tests = {
+    #(start,end):(expected,reason)
+    ((0,0),(9,9)):(True,"check random grid with no blockades"),
+    ((-4,-4),(9,9)):(False,"check out of bounds start"),
+    ((9,9),(-4,-4)):(False,"check out of bounds end")
+
+}
+
+test_find_path(find_path_tests)
