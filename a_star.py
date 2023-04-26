@@ -76,7 +76,7 @@ def insert_grid(grid,closed_vertices,start):
 
 
 
-def find_path(grid,start,end):
+def find_path(grid,start,end,print_grid= False):
     '''Purpose: will grab new open vertices and add them to open_vertices list
     
     param grid: an nxm grid 
@@ -92,7 +92,7 @@ def find_path(grid,start,end):
     previous = None
 
 
-    while current != end:
+    while current != end and not open_vertices.is_empty():
         previous = current
         current = open_vertices.get_current()
         taken_spaces.append(current)
@@ -107,17 +107,22 @@ def find_path(grid,start,end):
                 open_vertices.insert(F,coordinate,current)
     
 
-    insert_grid(grid,closed_vertices,start)
-    
-    
-    return print(np.array(grid))
+    if current == end:
+        insert_grid(grid,closed_vertices,start)
+        if print_grid:
+            print(np.array(grid))
+        return True
+    else:
+        return False
+
+     
 
 
 grid = [[0 for n in range(10)] for m in range(10)]
 
 start = (0,0)
 end = (9,9)
-find_path(grid,start,end)
+find_path(grid,start,end,True)
 
 
 
