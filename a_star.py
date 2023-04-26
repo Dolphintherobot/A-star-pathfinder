@@ -42,6 +42,8 @@ def square_generator(current,grid,taken):
             elif (x,y) in taken:
                 continue
             elif grid[x][y] == 2:
+                if y < m:
+                    taken.append((x,y+1))
                 continue
             else:
                 coordinate = (x,y)
@@ -110,7 +112,7 @@ def find_path(grid,start,end,print_grid= False):
             if not open_vertices.coordinate_is_in(F,coordinate,current):
                 open_vertices.insert(F,coordinate,current)
     
-
+   
     if current == end:
         insert_grid(grid,closed_vertices,start)
         if print_grid:
