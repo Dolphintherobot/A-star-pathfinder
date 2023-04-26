@@ -41,6 +41,8 @@ def square_generator(current,grid,taken):
                 continue
             elif (x,y) in taken:
                 continue
+            elif grid[x][y] == 2:
+                continue
             else:
                 coordinate = (x,y)
                 valid_coordinates.append(coordinate)

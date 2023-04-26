@@ -17,7 +17,7 @@ def map_to_grid(grid,width,margin,x,y):
     Post-condtions:will modify the coordinate on the grid to become a 1'''
     x = x//(width+margin)
     y =y//(width+margin)
-    grid[x][y] = 1        
+    grid[x][y] = 2        
 
  
 #some colors defined in RGB
@@ -64,7 +64,7 @@ while not done:
     for row in range(n):
         for column in range(m):
             color = RED
-            if grid[row][column] == 1:
+            if grid[row][column] == 2:
                 color = GREEN
             pygame.draw.rect(screen,
                              color,
