@@ -48,6 +48,31 @@ def square_generator(current,grid,taken):
 
 
 
+def insert_grid(grid,closed_vertices,start):
+    '''
+    Purpose: will insert the calculated shortest path into the grid
+    :parm grid: a 2d list,
+    :param closed_vertices: a list of tuples containing current_location and previous_location
+    respective order
+    :param start: a x,y tuple containing the starting position
+    returns None
+    Post-conditions: will modify the grid to contain 1's in the specified locations
+    '''
+
+    current,previous = closed_vertices[-1]
+    x,y = start
+    grid[x][y] = 1
+
+    while current != start:
+        x,y = current
+        grid[x][y] = 1
+        
+        for tuple in closed_vertices:
+            if tuple[0] == previous:
+                current,previous = tuple
+    
+    
+
 
 
 
@@ -82,24 +107,7 @@ def find_path(grid,start,end):
                 open_vertices.insert(F,coordinate,current)
     
 
-    current,previous = closed_vertices[-1]
-    print("I made it")
-    i = 0
-    while current != start:
-        # i  +=1
-        # if i ==10:
-        #     break
-
-        print(current)
-        x,y = current
-        grid[x][y] = 19
-        
-        for tuple in closed_vertices:
-            if tuple[0] == previous:
-                current,previous = tuple
-    
-    x,y = current
-    grid[x][y] = 19
+    insert_grid(grid,closed_vertices,start)
     
     
     return print(np.array(grid))
