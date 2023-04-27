@@ -1,5 +1,7 @@
 
 
+
+
 import open_vertices as ov
 import numpy as np
 
@@ -29,7 +31,7 @@ def square_generator(current,grid,taken):
 
     valid_coordinates = []
     n = len(grid) -1
-    m  = len(grid[0]) -1
+    m = len(grid[0]) -1
     top_left_x = current[0] -1
     top_left_y = current[1] - 1
 
@@ -76,7 +78,28 @@ def insert_grid(grid,closed_vertices,start):
                 current,previous = tuple
     
     
+def nearest_closed_vertice(current,closed_vertices):
+    """Purpose:to find the nearest closed vertice when pathfinder hits a dead end
+    :param current: an x,y tuple
+    :param closed_vertices: a list of tuples (current,previous)
+    :return: closest, a (x,y) coordinate that has the lowest F value"""
 
+    closest = None
+   
+    for tuple in closed_vertices:
+        coordinate = tuple[0]
+        if abs(current[0]- coordinate[0])  == 1 and abs(current[1]- coordinate[1]) ==1:
+            closest = coordinate
+    return closest
+    
+
+def to_far(current_pos,previous_pos):
+    """Purpose: will check if 2 spaces on the grid are to far apart from each other
+    :param current_pos: x,y tuple representing a position on the grid
+    :param previous_pos: x,y tuple representing the previous position
+    :return: True if is considered too far,False otherwise
+    """
+    return abs(current_pos[0]- previous_pos[0]) > 1 or abs(current_pos[1]- previous_pos[1]) >1
 
 
 
@@ -94,17 +117,20 @@ def find_path(grid,start,end,print_grid= False):
     open_vertices = ov.open_vertices()
 
     open_vertices.insert(0,start,None)
-    current = None
-    previous = None
+    current = start
+    previous = start
+    
 
 
     while current != end and not open_vertices.is_empty():
         previous = current
         current = open_vertices.get_current()
         taken_spaces.append(current)
+
+        if to_far(current,previous):
+            previous = nearest_closed_vertice(current,closed_vertices)
+
         closed_vertices.append((current,previous))
-
-
         valid_coordinates = square_generator(current,grid,taken_spaces)
 
         for coordinate in valid_coordinates:
