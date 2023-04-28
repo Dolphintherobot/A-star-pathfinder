@@ -199,11 +199,6 @@ def test_find_path2(dict):
         for space in invalid_spaces:
             x,y = space
             grid[x][y] = 2
-            # if 0 < x <8:
-            #     grid[x+1][y] = 2
-            #     grid[9][1] = 2
-                
-
 
         
         actual = A.find_path(grid,start,end)
@@ -247,9 +242,7 @@ def test_find_path3(dict):
             x,y = space
             
             grid[x][y] = 2
-            # if 0 < x <8:
-            #     grid[x+1][y] = 2
-            #     grid[9][1] = 2
+            
                 
 
 
