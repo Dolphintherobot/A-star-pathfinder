@@ -89,14 +89,14 @@ def main(grid):
                 done = True
             elif event.type ==pygame.MOUSEBUTTONDOWN:
                 mouse_x,mouse_y = get_coordinates()
-                # if button.collidepoint(mouse_x,mouse_y):
-                #     n = len(grid) - 1
-                #     m = len(grid[0]) - 1
-                #     start = (0,0)
-                #     end = (n,m)
-                #     A.find_path(grid,start,end)
-                # else:
-                map_to_grid(grid,width,margin,mouse_x,mouse_y)
+                if 0<= mouse_x <=100:
+                    n = len(grid) - 1
+                    m = len(grid[0]) - 1
+                    start = (0,0)
+                    end = (n,m)
+                    A.find_path(grid,start,end)
+                else:
+                    map_to_grid(grid,width,margin,mouse_x,mouse_y)
 
         BLACK = (0,0,0)
         BLUE = (0,0,255)
