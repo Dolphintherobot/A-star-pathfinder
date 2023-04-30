@@ -19,6 +19,8 @@ def map_to_grid(grid,width,margin,x,y):
     y =y//(width+margin)
     grid[x][y] = 2
 
+
+
 def draw_squares(screen,grid,height,width,margin):
     ''''Purpose: to draw the squares into the gui
     :parm screen: the display being drawn onto
@@ -63,6 +65,14 @@ def main(grid):
     size = (255, 355)
     screen = pygame.display.set_mode(size)
 
+
+    font_type = pygame.font.get_default_font()
+
+    font = pygame.font.Font(font_type)
+    font.set_bold(True)
+    button = pygame.Rect(0,0,500,100)
+    text = font.render("Find path",True,(255,255,255))
+
     height = 20
     width = 20    
     margin = 5
@@ -80,8 +90,12 @@ def main(grid):
                 map_to_grid(grid,width,margin,mouse_x,mouse_y)
 
         BLACK = (0,0,0)
+        BLUE = (0,0,255)
         screen.fill(BLACK)
+        pygame.draw.rect(screen,BLUE,button)
+        
         draw_squares(screen,grid,height,width,margin)
+        screen.blit(text,(80,40))
         pygame.display.flip()
     
         clock.tick(60)
