@@ -18,7 +18,6 @@ def map_to_grid(grid,width,margin,x,y):
     Post-condtions:will modify the coordinate on the grid to become a 2'''
     x = x//(width+margin) -4
     y =y//(width+margin)
-    print(x,y)
     grid[x][y] = 2
 
 
