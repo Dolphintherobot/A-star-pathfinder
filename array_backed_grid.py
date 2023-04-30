@@ -1,5 +1,6 @@
 
 import pygame
+import a_star as A
 
 
 
@@ -15,8 +16,9 @@ def get_coordinates():
 def map_to_grid(grid,width,margin,x,y):
     '''Purpose:maps a point on the gui and transfers it to the array backed grid
     Post-condtions:will modify the coordinate on the grid to become a 2'''
-    x = x//(width+margin)
+    x = x//(width+margin) -4
     y =y//(width+margin)
+    print(x,y)
     grid[x][y] = 2
 
 
@@ -87,6 +89,13 @@ def main(grid):
                 done = True
             elif event.type ==pygame.MOUSEBUTTONDOWN:
                 mouse_x,mouse_y = get_coordinates()
+                # if button.collidepoint(mouse_x,mouse_y):
+                #     n = len(grid) - 1
+                #     m = len(grid[0]) - 1
+                #     start = (0,0)
+                #     end = (n,m)
+                #     A.find_path(grid,start,end)
+                # else:
                 map_to_grid(grid,width,margin,mouse_x,mouse_y)
 
         BLACK = (0,0,0)
