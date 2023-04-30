@@ -14,10 +14,44 @@ def get_coordinates():
 
 def map_to_grid(grid,width,margin,x,y):
     '''Purpose:maps a point on the gui and transfers it to the array backed grid
-    Post-condtions:will modify the coordinate on the grid to become a 1'''
+    Post-condtions:will modify the coordinate on the grid to become a 2'''
     x = x//(width+margin)
     y =y//(width+margin)
-    grid[x][y] = 2        
+    grid[x][y] = 2
+
+def draw_squares(screen,grid,height,width,margin):
+    ''''Purpose: to draw the squares into the gui
+    :parm screen: the display being drawn onto
+    :param grid: a nested list,representing the array backed grid
+    :param height:how tall you want the squares to be
+    :param width: width of the squares
+    :param margin: how much space between the squares
+    '''
+
+    n = len(grid) 
+    m = len(grid[0]) 
+
+    
+    WHITE = (255, 255, 255)
+    GREEN = (0, 255, 0)
+    RED = (255, 0, 0)
+
+    for row in range(n):
+        for column in range(m):
+            color = WHITE
+            if grid[row][column] == 2:
+                color = RED
+            elif grid[row][column] == 1:
+                color = GREEN
+            
+
+
+            pygame.draw.rect(screen,
+                             color,
+                             [(margin + width) * column + margin,
+                              (margin + height) * row + margin,
+                              width,
+                              height])       
 
  
 #some colors defined in RGB
@@ -55,23 +89,13 @@ while not done:
             mouse_x,mouse_y = get_coordinates()
             map_to_grid(grid,width,margin,mouse_x,mouse_y)
 
-
+    
 
     screen.fill(BLACK)
+    draw_squares(screen,grid,height,width,margin)
 
     
-    #draw in squares
-    for row in range(n):
-        for column in range(m):
-            color = RED
-            if grid[row][column] == 2:
-                color = GREEN
-            pygame.draw.rect(screen,
-                             color,
-                             [(margin + width) * column + margin,
-                              (margin + height) * row + margin,
-                              width,
-                              height]) 
+    
     
     pygame.display.flip()
  
