@@ -49,7 +49,7 @@ def draw_squares(screen,grid,height,width,margin):
             pygame.draw.rect(screen,
                              color,
                              [(margin + width) * column + margin,
-                              (margin + height) * row + margin,
+                              (margin + height) * row + margin+100,
                               width,
                               height])       
 
@@ -60,7 +60,7 @@ def main(grid):
     Purpose:program that runs the gui
     :param grid: a 2d list'''
     pygame.init()
-    size = (255, 255)
+    size = (255, 355)
     screen = pygame.display.set_mode(size)
 
     height = 20
